@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+authors = ["karthik2804 <karthik.ganeshram@fermyon.com>"]
+description = ""
+name = "movie-ratings"
+version = "0.1.0"
+
+[[trigger.http]]
+route = "/..."
+component = "movie-ratings"
+
+[component.movie-ratings]
+source = "app.wasm"
+sqlite_databases = ["default"]
+[component.movie-ratings.build]
+command = "componentize-py -w spin-http componentize app -o app.wasm"
+watch = ["*.py", "requirements.txt"]
